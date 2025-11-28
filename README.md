@@ -1,5 +1,355 @@
 # 域名管理系统
 
+> 一个功能强大、易于使用的域名资产管理系统，帮助您集中管理、监控和维护所有域名资产。
+
+---
+
+## 📋 目录
+
+- [✨ 特性](#-特性)
+- [🚀 快速开始](#-快速开始)
+- [📖 使用指南](#-使用指南)
+- [🔧 部署教程](#-部署教程)
+  - [本地部署](#本地部署)
+  - [Docker部署](#docker部署)
+  - [NAS部署](#nas部署)
+  - [Cloudflare Pages部署](#cloudflare-pages部署)
+  - [GitHub Pages部署](#github-pages部署)
+  - [服务器部署](#服务器部署)
+- [🤝 如何贡献](#-如何贡献)
+- [☕ 支持项目](#-支持项目)
+- [📄 许可证](#-许可证)
+- [📞 联系方式](#-联系方式)
+- [🙏 致谢](#-致谢)
+
+
+## ✨ 特性
+
+- **完整的域名管理**：支持添加、编辑、删除和查看域名信息
+- **域名状态监控**：自动检测域名是否活跃、即将到期或已过期
+- **数据分析统计**：提供域名状态分布、服务商分布等数据可视化
+- **续费日历**：以年/月/周视图展示域名到期时间
+- **提醒通知系统**：支持域名到期和SSL证书到期提醒
+- **ICP备案管理**：记录和管理域名的ICP备案信息
+- **多平台部署**：支持本地、Docker、NAS、Cloudflare Pages、GitHub Pages等多种部署方式
+- **响应式设计**：支持桌面和移动设备访问
+- **深色模式**：支持浅色/深色主题切换
+
+
+## 🚀 快速开始
+
+### 前提条件
+
+- 操作系统：Windows、macOS 或 Linux
+- 运行环境：Node.js 18+
+- 包管理器：pnpm
+- 内存：建议至少 4GB
+- 磁盘空间：至少 500MB
+
+
+### 安装步骤
+
+#### 方法一：直接安装
+
+1. 克隆项目代码
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+
+2. 安装依赖
+   ```bash
+   pnpm install
+   ```
+
+3. 启动开发服务器
+   ```bash
+   pnpm dev
+   ```
+
+4. 在浏览器中访问 `http://localhost:3000`
+
+
+#### 方法二：Docker 安装
+
+1. 克隆项目代码
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+
+2. 构建并运行 Docker 容器
+   ```bash
+   docker-compose up -d
+   ```
+
+3. 在浏览器中访问 `http://localhost:3000`
+
+
+## 📖 使用指南
+
+### 基本用法
+
+1. **登录系统**：使用默认账号 `admin` 和密码 `admin123` 登录
+2. **添加域名**：点击"添加域名"按钮，填写域名信息并保存
+3. **查看域名列表**：从侧边栏导航到"域名管理"查看所有域名
+4. **编辑域名**：在域名列表中选择要编辑的域名，点击"编辑"按钮进行修改
+5. **查看数据分析**：从侧边栏导航到"数据分析"查看各项统计数据
+
+
+### 高级功能
+
+#### 通知设置
+
+- 在"系统设置"中配置邮件通知服务
+- 设置域名和SSL证书到期提醒的时间点
+- 启用/禁用每周汇总报告
+
+
+## 🔧 部署教程
+
+### 本地部署
+
+1. 确保安装了 Node.js 18+ 和 pnpm
+2. 克隆项目代码
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+3. 安装依赖
+   ```bash
+   pnpm install
+   ```
+4. 构建项目
+   ```bash
+   pnpm build
+   ```
+5. 部署静态文件：将 `dist/static` 目录中的文件部署到您的Web服务器
+
+
+### Docker部署
+
+1. 克隆项目代码
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+2. 查看 docker-compose.yml 文件（已配置好）
+   ```yaml
+   version: '3.8'
+
+   services:
+     domain-manager:
+       build:
+         context: .
+         dockerfile: Dockerfile
+       ports:
+         - "3000:80"
+       environment:
+         - NODE_ENV=production
+       restart: unless-stopped
+       volumes:
+         - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+   ```
+   该配置会：
+   - 构建包含应用的Docker镜像
+   - 将容器的80端口映射到主机的3000端口
+   - 设置容器在退出时自动重启
+   - 将本地的nginx.conf挂载到容器中
+
+3. 启动Docker容器
+   ```bash
+   docker-compose up -d
+   ```
+
+
+### NAS部署
+
+1. 在NAS上安装Docker套件
+2. 通过Docker Compose部署
+   - 创建一个共享文件夹，如 `domain-manager`
+   - 将项目中的 `docker-compose.yml` 和 `nginx.conf` 文件复制到该文件夹
+   - 使用NAS的Docker界面或SSH执行：
+     ```bash
+     cd /volume1/docker/domain-manager
+     docker-compose up -d
+     ```
+3. 通过NAS的IP地址和端口3000访问系统
+
+
+### Cloudflare Pages部署
+
+1. 确保已将代码推送到GitHub仓库
+2. 登录Cloudflare账号，进入Pages页面
+3. 点击"Create a project"，选择GitHub连接您的仓库
+4. 配置构建设置：
+   - 构建命令：`pnpm install --no-frozen-lockfile && pnpm build`
+   - 构建输出目录：`dist/static`
+5. 点击"Save and Deploy"开始部署
+6. 部署完成后，可以通过Cloudflare提供的域名访问系统
+
+
+### GitHub Pages部署
+
+1. 确保已将代码推送到GitHub仓库
+2. 修改 `vite.config.ts` 文件，添加正确的 `base` 配置
+3. 在GitHub仓库设置中，启用GitHub Pages功能
+4. 配置GitHub Actions工作流文件：
+   ```yaml
+   name: Deploy to GitHub Pages
+
+   on:
+     push:
+       branches: [ main ]
+
+   jobs:
+     build-and-deploy:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v2
+         - uses: actions/setup-node@v2
+           with:
+             node-version: '18'
+         - name: Install pnpm
+           run: npm install -g pnpm
+         - name: Install dependencies
+           run: pnpm install --no-frozen-lockfile
+         - name: Build
+           run: pnpm build
+         - name: Deploy
+           uses: peaceiris/actions-gh-pages@v3
+           with:
+             github_token: ${{ secrets.GITHUB_TOKEN }}
+             publish_dir: ./dist/static
+   ```
+5. 提交并推送工作流文件，GitHub Actions会自动构建和部署
+
+
+### 服务器部署
+
+1. 在服务器上安装Node.js 18+和Nginx
+2. 克隆项目代码到服务器
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+3. 安装依赖并构建项目
+   ```bash
+   pnpm install --no-frozen-lockfile
+   pnpm build
+   ```
+4. 配置Nginx服务
+   ```bash
+   server {
+       listen 80;
+       server_name your-domain.com;
+       
+       location / {
+           root /path/to/domain-management-system/dist/static;
+           index index.html index.htm;
+           try_files $uri $uri/ /index.html;
+       }
+       
+       error_page 404 /index.html;
+   }
+   ```
+5. 重启Nginx服务
+   ```bash
+   systemctl restart nginx
+   ```
+6. 通过您的域名访问系统
+
+
+## 🤝 如何贡献
+
+### 开发环境搭建
+
+1. 克隆项目代码
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
+
+2. 安装依赖
+   ```bash
+   pnpm install
+   ```
+
+3. 启动开发服务器
+   ```bash
+   pnpm dev
+   ```
+
+
+### 提交代码
+
+1. 创建一个新的分支
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+2. 编写代码并提交
+   ```bash
+   git add .
+   git commit -m "添加新功能：XXX"
+   ```
+
+3. 推送到远程仓库并创建Pull Request
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+
+### 贡献类型
+
+- 🐛 修复错误和问题
+- 💡 提出新功能建议
+- 📝 改进文档和使用指南
+- 🔧 优化代码和性能
+- 🎨 改进UI/UX设计
+
+
+## ☕ 支持项目
+
+### 一次性捐赠
+
+| 支付宝 | 微信 |
+|-------|------|
+| ![支付宝收款码](https://github.com/user-attachments/assets/ce03a5fe-d2f5-4ff4-b8eb-e611aab43f95) | ![微信收款码](https://github.com/user-attachments/assets/1d3bae2a-4f7b-437b-9e79-d3fdfb80af75) |
+
+
+### 定期赞助
+
+如果您喜欢这个项目并希望持续支持它的开发，可以考虑成为定期赞助商。
+
+
+## 📄 许可证
+
+本项目基于 [Apache-2.0](LICENSE) 开源许可证。
+
+
+## 📞 联系方式
+
+- 作者: AKE5297
+- 邮箱: 3276618864j@gmail.com
+- 项目主页: [https://github.com/AKE5297/domain-management-system](https://github.com/AKE5297/domain-management-system)
+- 问题反馈: [GitHub Issues](https://github.com/AKE5297/domain-management-system/issues)
+
+
+## 🙏 致谢
+
+感谢所有为这个项目做出贡献的开发者和支持者！
+
+特别感谢以下技术和工具的支持：
+- React 18+
+- TypeScript
+- Tailwind CSS
+- Vite
+- Recharts
+- Docker
+
+如果觉得这个项目有帮助，请给它一个 ⭐️ 支持！
+
 > 一个功能完善的现代域名管理系统，帮助您集中管理、监控和跟踪所有域名资产，避免域名过期风险。
 
 ---

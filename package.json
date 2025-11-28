@@ -1,7 +1,7 @@
 {
-  "name": "project_template_react",
+  "name": "domain-management-system",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev:client": "vite --host --port 3000",
