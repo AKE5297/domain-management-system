@@ -8,6 +8,49 @@
 - 域名状态监控（活跃、即将到期、已过期）
 - 数据可视化和统计分析
 - 续费日历和到期提醒设置
+
+## 部署步骤
+
+### 前提条件
+- 一个Cloudflare账号
+- 已在GitHub或其他支持的git平台上创建了仓库
+
+### 详细步骤
+
+1. **登录Cloudflare并创建Pages项目**
+   - 访问[Cloudflare Pages](https://pages.cloudflare.com/)
+   - 点击"创建项目"
+   - 连接您的git仓库
+   - 选择域名管理系统的仓库
+
+2. **配置构建设置**
+   - 构建命令：`pnpm install --no-frozen-lockfile && pnpm run build`
+   - 输出目录：`dist/static`
+   - 环境：Node.js v22
+   - 框架预设：None
+
+3. **部署项目**
+   - 点击"保存并部署"
+   - 等待部署完成
+
+4. **自定义域名（可选）**
+   - 在项目设置中配置自定义域名
+
+## 常见问题解决
+
+**问题：pnpm锁文件与package.json不匹配**
+**解决方案：** 在构建命令中使用`--no-frozen-lockfile`参数确保即使锁文件不匹配也能正常构建。
+
+**问题：构建失败，提示缺少依赖**
+**解决方案：** 确保构建命令中包含`pnpm install --no-frozen-lockfile`以正确安装所有依赖。
+
+## 技术栈
+- React 18+
+- TypeScript
+- Tailwind CSS
+- Vite
+- React Router
+- Recharts
 - 多主题支持（浅色/深色模式）
 - 用户认证和权限管理
 - ICP备案信息管理

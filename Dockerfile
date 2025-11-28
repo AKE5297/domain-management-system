@@ -8,9 +8,9 @@ WORKDIR /app
 COPY package.json ./
 
 # 安装依赖管理工具
-RUN npm install -g pnpm npm-force-resolutions
+RUN npm install -g pnpm
 
-# 安装项目依赖
+# 安装项目依赖，使用--no-frozen-lockfile确保即使锁文件不匹配也能安装
 RUN pnpm install --no-frozen-lockfile
 
 # 复制所有源代码

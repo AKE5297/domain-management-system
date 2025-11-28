@@ -1,7 +1,7 @@
 {
   "name": "domain-management-system",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "scripts": {
     "dev:client": "vite --host --port 3000",
@@ -12,14 +12,14 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.9.2",
+    "lucide-react": "^0.378.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.3.0",
     "recharts": "^2.15.1",
     "sonner": "^2.0.2",
     "tailwind-merge": "^3.0.2",
-    "zod": "^3.24.2",
-    "lucide-react": "^0.378.0"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
@@ -31,8 +31,5 @@
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vite-tsconfig-paths": "^5.1.4"
-  },
-  "pnpm": {
-    "overrides": {}
   }
 }
