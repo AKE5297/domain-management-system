@@ -898,9 +898,11 @@ export default function Settings() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <i className="fas fa-sync-alt h-5 w-5 text-gray-500 dark:text-gray-400 mr-3"></i>
-                        <label htmlFor="autoRefresh" className="text-gray-900 dark:text-white">自动刷新数据</label>
-                      </div>
+                         <div className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-3">
+                           <i className="fas fa-sync-alt"></i>
+                         </div>
+                         <label htmlFor="autoRefresh" className="text-gray-900 dark:text-white">自动刷新数据</label>
+                       </div>
                       <div className="relative inline-block w-10 align-middle select-none">
                         <input
                           type="checkbox"

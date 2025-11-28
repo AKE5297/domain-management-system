@@ -1,7 +1,7 @@
 {
   "name": "domain-management-system",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.5",
   "type": "module",
   "scripts": {
     "dev:client": "vite --host --port 3000",
@@ -9,6 +9,10 @@
     "build:client": "vite build --outDir dist/static",
     "build": "rm -rf dist && pnpm install --no-frozen-lockfile && pnpm build:client && cp package.json dist && touch dist/build.flag",
     "prepare": "pnpm install --no-frozen-lockfile"
+  },
+  "preinstall": "npx npm-force-resolutions",
+  "resolutions": {
+    "lucide-react": "^0.378.0"
   },
   "dependencies": {
     "clsx": "^2.1.1",

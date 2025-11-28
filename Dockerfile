@@ -4,11 +4,13 @@ FROM node:18-alpine AS builder
 # 设置工作目录
 WORKDIR /app
 
-# 复制package.json和package-lock.json
-COPY package.json pnpm-lock.yaml ./
+# 复制package.json
+COPY package.json ./
 
-# 安装依赖
-RUN npm install -g pnpm
+# 安装依赖管理工具
+RUN npm install -g pnpm npm-force-resolutions
+
+# 安装项目依赖
 RUN pnpm install --no-frozen-lockfile
 
 # 复制所有源代码

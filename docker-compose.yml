@@ -12,3 +12,11 @@ services:
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+# 说明：
+# 1. build.context: 指定构建上下文为当前目录
+# 2. build.dockerfile: 指定使用当前目录下的Dockerfile进行构建
+# 3. ports: 将容器的80端口映射到主机的3000端口
+# 4. environment: 设置环境变量为生产环境
+# 5. restart: 设置容器在退出时自动重启，除非明确停止
+# 6. volumes: 将本地的nginx.conf文件挂载到容器中，方便修改配置

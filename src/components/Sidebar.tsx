@@ -249,11 +249,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onLogout, currentPage }) => {
             className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             aria-label={theme === 'light' ? '切换到暗色模式' : '切换到亮色模式'}
           >
-            {theme === 'light' ? (
-              <i className="fas fa-moon"></i>
-            ) : (
-              <i className="fas fa-sun"></i>
-            )}
+             <i className={`fas ${theme === 'light' ? 'fa-moon' : 'fa-sun'}`}></i>
           </button>
           <button 
             onClick={onLogout}
