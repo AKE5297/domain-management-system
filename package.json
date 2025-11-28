@@ -1,8 +1,11 @@
 {
   "name": "domain-management-system",
   "private": true,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "dev:client": "vite --host --port 3000",
     "dev": "pnpm dev:client",
