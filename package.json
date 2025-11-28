@@ -1,18 +1,13 @@
 {
   "name": "domain-management-system",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.7",
   "type": "module",
   "scripts": {
     "dev:client": "vite --host --port 3000",
     "dev": "pnpm dev:client",
     "build:client": "vite build --outDir dist/static",
-    "build": "rm -rf dist && pnpm install --no-frozen-lockfile && pnpm build:client && cp package.json dist && touch dist/build.flag",
-    "prepare": "pnpm install --no-frozen-lockfile"
-  },
-  "preinstall": "npx npm-force-resolutions",
-  "resolutions": {
-    "lucide-react": "^0.378.0"
+    "build": "rm -rf dist && pnpm install --no-frozen-lockfile && pnpm build:client && cp package.json dist && touch dist/build.flag"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -36,5 +31,8 @@
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vite-tsconfig-paths": "^5.1.4"
+  },
+  "pnpm": {
+    "overrides": {}
   }
 }
