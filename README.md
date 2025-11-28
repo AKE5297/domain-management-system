@@ -1,6 +1,6 @@
-域名管理系统(Domain Management System)
+# 域名管理系统
 
-> 一个功能完善的现代domain-management-system，帮助您集中管理、监控和跟踪所有域名资产，避免域名过期风险。
+> 一个功能完善的现代域名管理系统，帮助您集中管理、监控和跟踪所有域名资产，避免域名过期风险。
 
 ---
 
@@ -47,8 +47,8 @@
 
 1. 克隆项目仓库
 ```bash
-git clone https://github.com/AKE5297/domain-management-system.git
-cd domain-management-system
+git clone https://github.com/AKE5297/域名管理系统.git
+cd 域名管理系统
 ```
 
 2. 安装依赖
@@ -70,8 +70,8 @@ pnpm dev
 
 1. 克隆项目仓库
 ```bash
-git clone https://github.com/AKE5297/domain-management-system.git
-cd domain-management-system
+git clone https://github.com/AKE5297/域名管理系统.git
+cd 域名管理系统
 ```
 
 2. 使用Docker Compose启动
@@ -249,8 +249,8 @@ services:
 
 1. 克隆项目仓库
 ```bash
-git clone https://github.com/AKE5297/domain-management-system.git
-cd domain-management-system
+git clone https://github.com/AKE5297/域名管理系统.git
+cd 域名管理系统
 ```
 
 2. 安装依赖
@@ -320,9 +320,9 @@ git push origin feature/your-feature-name
 
 - 作者: AKE5297
 - 邮箱: 3276618864j@gmail.com
-- 项目主页: [https://github.com/AKE5297/domain-management-system](https://github.com/AKE5297/domain-management-system)
-- 问题反馈: [https://github.com/AKE5297/domain-management-system/issues](https://github.com/AKE5297/domain-management-system/issues)
-- 讨论区: [https://github.com/AKE5297/domain-management-system/discussions](https://github.com/AKE5297/domain-management-system/discussions)
+- 项目主页: [https://github.com/AKE5297/域名管理系统](https://github.com/AKE5297/域名管理系统)
+- 问题反馈: [https://github.com/AKE5297/域名管理系统/issues](https://github.com/AKE5297/域名管理系统/issues)
+- 讨论区: [https://github.com/AKE5297/域名管理系统/discussions](https://github.com/AKE5297/域名管理系统/discussions)
 
 
 ## 🙏 致谢

@@ -9,7 +9,7 @@ COPY package.json pnpm-lock.yaml ./
 
 # 安装依赖
 RUN npm install -g pnpm
-RUN pnpm install
+RUN pnpm install --no-frozen-lockfile
 
 # 复制所有源代码
 COPY . .
