@@ -10,7 +10,7 @@ export default function Login() {
   const { setIsAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // 登录验证 - 从localStorage获取用户信息，而不是硬编码凭证
+  // 登录验证
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);

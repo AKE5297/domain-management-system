@@ -1,9 +1,9 @@
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/contexts/authContext';
-import { CalendarDays, Globe, AlertTriangle, CheckCircle } from 'lucide-react';
-import Sidebar from '@/components/Sidebar';
-import { cn } from '@/lib/utils';
+import { CalendarDays } from 'lucide-react';
+  import Sidebar from '@/components/Sidebar';
+  import { cn } from '@/lib/utils';
 
 // 定义域名接口
 interface DomainInfo {

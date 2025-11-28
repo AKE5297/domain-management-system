@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '@/contexts/authContext';
-import { ArrowLeft, Plus, CalendarDays, Server, Check, X } from 'lucide-react';
+import { ArrowLeft, Plus, Server } from 'lucide-react';
 import { toast } from 'sonner';
 import Sidebar from '@/components/Sidebar';
 import { z } from 'zod';
