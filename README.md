@@ -1,97 +1,147 @@
 # 域名管理系统
 
-一个现代化的域名管理系统，帮助用户轻松管理和监控所有域名资产。
+一个现代化、功能齐全的域名管理系统，帮助用户轻松管理和监控所有域名资产。
 
-## 功能特性
+## 📋 项目简介
 
-- 域名列表管理（添加、编辑、删除、查看详情）
-- 域名状态监控（活跃、即将到期、已过期）
-- 数据分析和可视化图表
-- 续费日历视图（年视图、月视图、周视图）
-- 域名到期提醒通知
-- 支持ICP备案信息管理
-- 深色/浅色主题切换
-- 本地数据存储
+该域名管理系统是一个基于 React + TypeScript 的单页应用程序，提供直观的界面来管理、跟踪和分析您的所有域名。系统支持域名添加、编辑、删除、状态监控、到期提醒等核心功能，并提供丰富的数据可视化和报表功能。
 
-## 技术栈
+## 🚀 技术栈
 
-- React 18+
-- TypeScript
-- Tailwind CSS
-- React Router
-- Recharts (数据可视化)
-- Lucide React (图标)
-- PNPM (包管理)
+- **前端框架**: React 18+
+- **编程语言**: TypeScript
+- **路由**: React Router
+- **UI 框架**: Tailwind CSS
+- **图标**: Lucide React + Font Awesome
+- **数据可视化**: Recharts
+- **表单验证**: Zod
+- **状态管理**: Context API + Local Storage
+- **构建工具**: Vite
+- **部署平台**: Cloudflare Pages
 
-## 本地开发
+## 📦 快速开始
 
 ### 前提条件
 
 - Node.js >= 16.0.0
-- PNPM
+- pnpm >= 8.0.0
 
 ### 安装步骤
 
 1. 克隆仓库
-```bash
-git clone https://github.com/AKE5297/domain-management-system.git
-cd domain-management-system
-```
+   ```bash
+   git clone https://github.com/AKE5297/domain-management-system.git
+   cd domain-management-system
+   ```
 
 2. 安装依赖
-```bash
-pnpm install
-```
+   ```bash
+   pnpm install
+   ```
 
 3. 启动开发服务器
-```bash
-pnpm dev
+   ```bash
+   pnpm dev
+   ```
+
+4. 构建生产版本
+   ```bash
+   pnpm build
+   ```
+
+## 🎯 功能特性
+
+### 核心功能
+- 🔧 **域名管理**: 添加、编辑、删除和查看域名详细信息
+- 📅 **到期监控**: 自动检测域名到期状态并提供视觉提示
+- 🔔 **通知系统**: 配置域名到期提醒和其他通知
+- 🔍 **搜索筛选**: 快速查找域名并根据状态、服务商等进行筛选
+
+### 数据可视化
+- 📊 **控制面板**: 直观展示域名统计和关键指标
+- 📈 **数据分析**: 域名状态分布、服务商分布和月度到期趋势图表
+- 🗓️ **续费日历**: 多视图日历展示域名到期情况
+
+### 用户体验
+- 🌓 **深色模式**: 支持浅色和深色主题切换
+- 📱 **响应式设计**: 适配不同屏幕尺寸的设备
+- ⚡ **本地存储**: 所有数据保存在浏览器本地，无需后端服务
+
+## 📁 项目结构
+
+```
+├── src/                  # 源代码目录
+│   ├── components/       # 可复用组件
+│   ├── contexts/         # React Contexts
+│   ├── hooks/            # 自定义 Hooks
+│   ├── lib/              # 工具函数
+│   ├── pages/            # 页面组件
+│   ├── App.tsx           # 应用入口组件
+│   └── main.tsx          # 渲染入口
+├── public/               # 静态资源
+├── Dockerfile            # Docker 构建配置
+├── docker-compose.yml    # Docker Compose 配置
+├── index.html            # HTML 入口文件
+├── nginx.conf            # Nginx 配置
+└── package.json          # 项目依赖和脚本
 ```
 
-4. 构建项目
-```bash
-pnpm build
-```
+## 🔧 开发说明
 
-## Cloudflare Pages 部署指南
+### 代码规范
 
-### 自动部署配置
+- 使用 TypeScript 进行类型检查
+- 组件尽量保持独立和可复用
+- 使用 Tailwind CSS 进行样式设计
+- 遵循 React 最佳实践
 
-1. 登录Cloudflare账号，进入Pages控制台
-2. 连接您的GitHub仓库
-3. 配置构建设置：
-   - 框架预设：None
-   - 构建命令：`pnpm install && pnpm build`
-   - 构建输出目录：`dist`
-4. 点击"开始部署"
+### 提交规范
 
-### 环境变量（可选）
+- 提交消息应该简明扼要
+- 使用语义化版本号
 
-目前项目使用本地存储，不需要特别的环境变量配置。
+## 🚀 部署指南
 
-### 部署常见问题
+### Cloudflare Pages 部署
 
-1. **锁文件不匹配错误**
-   - 问题：`ERR_PNPM_OUTDATED_LOCKFILE`
-   - 解决方案：项目已配置`.npmrc`文件中的`frozen-lockfile=false`，解决了锁文件不匹配问题
+1. 确保项目根目录有 `wrangler.toml` 文件（已包含）
+2. 将代码推送到 GitHub 仓库
+3. 在 Cloudflare Pages 中连接 GitHub 仓库
+4. 配置构建命令：`pnpm install --no-frozen-lockfile && pnpm run build`
+5. 设置发布目录：`dist/static`
+6. 点击 "Deploy site" 开始部署
 
-2. **依赖安装失败**
-   - 确保使用PNPM作为包管理器
-   - 如遇到问题，尝试修改构建命令为：`pnpm install --no-frozen-lockfile && pnpm build`
+### Docker 部署
 
-## 使用说明
+1. 确保安装了 Docker 和 Docker Compose
+2. 运行以下命令：
+   ```bash
+   docker-compose up -d
+   ```
+3. 访问 `http://localhost:3000` 查看应用
 
-### 默认登录凭证
-- 用户名：admin
-- 密码：admin123
+## 🔐 登录凭证
 
-### 主要功能使用
-1. **控制面板**：查看域名概览和统计信息
-2. **域名管理**：添加、编辑和删除域名
-3. **数据分析**：查看域名状态分布和趋势
-4. **续费日历**：通过日历视图查看域名到期时间
-5. **系统设置**：配置通知、邮箱服务和偏好设置
+系统默认提供管理员账户：
+- 用户名: `admin`
+- 密码: `admin123`
 
-## 许可证
+您可以在登录后通过设置页面修改密码。
 
-MIT License
+## 🤝 贡献
+
+欢迎贡献代码和提供建议！请遵循以下步骤：
+
+1. Fork 项目仓库
+2. 创建功能分支 (`git checkout -b feature/your-feature`)
+3. 提交更改 (`git commit -m 'Add your feature'`)
+4. 推送到分支 (`git push origin feature/your-feature`)
+5. 创建 Pull Request
+
+## 📝 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 📞 支持
+
+如有任何问题或建议，请联系项目维护者。
