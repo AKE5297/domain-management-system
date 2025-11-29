@@ -1,25 +1,56 @@
-# 域名管理系统
+# 域名管理系统 - 部署指南
 
-一个现代化的域名管理系统，帮助用户轻松管理域名资产，跟踪到期时间，接收续费提醒。
+## Cloudflare Pages 部署指南
 
-## 功能特性
+本指南将帮助您在Cloudflare Pages上成功部署域名管理系统。
 
-- 🎯 域名添加、编辑、删除功能
-- 📊 数据统计和可视化分析
-- 📅 域名到期日历视图
-- ⚙️ 系统设置和通知管理
+### 配置文件说明
 
-## 部署指南
+项目中已经包含了完整的Cloudflare Pages配置：
 
-### Cloudflare Pages 部署
+1. **wrangler.toml** - Cloudflare Pages配置文件，包含：
+   - 构建命令：`pnpm install --no-frozen-lockfile && pnpm build`
+   - 输出目录：`dist/static`
+   - SPA路由支持配置
+   - 缓存控制配置
 
-1. 确保项目包含有效的 `wrangler.toml` 文件
-2. 将代码推送到 GitHub 仓库
-3. 在 Cloudflare Pages 中连接您的 GitHub 仓库
-4. 确保构建配置中使用正确的构建命令
-5. 部署应该会自动开始
+2. **package.json** - 包含专用部署脚本：
+   - `deploy` 脚本：使用 `--no-frozen-lockfile` 参数确保依赖安装成功
+   - `cf-build` 脚本：Cloudflare Pages专用构建命令
+
+### 部署步骤
+
+1. **准备工作**
+   - 确保您的代码已推送到GitHub/GitLab等代码仓库
+   - 拥有一个Cloudflare账号
+
+2. **创建Cloudflare Pages项目**
+   - 登录Cloudflare控制台
+   - 导航到Pages部分
+   - 点击"创建项目"
+   - 连接您的代码仓库
+   - 选择主分支
+
+3. **配置构建设置**
+   - 框架预设：选择"None"
+   - 构建命令：`pnpm install --no-frozen-lockfile && pnpm build`
+   - 构建输出目录：`dist/static`
+   - 环境变量：无需额外配置
+
+4. **部署完成**
+   - 点击"部署站点"
+   - Cloudflare将自动构建和部署您的应用
+   - 部署成功后，您将获得一个临时域名
+
+### 重要注意事项
+
+1. **锁文件问题**：项目使用了`--no-frozen-lockfile`参数以避免依赖安装时的锁文件版本不匹配问题
+2. **SPA路由**：配置了适当的重定向规则确保单页应用路由正常工作
+3. **缓存控制**：设置了适当的缓存策略确保用户总是获取最新版本
 
 ### 本地开发
+
+如需本地开发和测试，请使用以下命令：
 
 ```bash
 # 安装依赖
@@ -27,49 +58,18 @@ pnpm install
 
 # 启动开发服务器
 pnpm dev
-
-# 构建项目
-pnpm build
 ```
 
-## 部署注意事项
+### Docker部署（可选）
 
-- 确保 .npmrc 文件中包含 `frozen-lockfile=false` 配置
-- 构建输出目录为 `dist/static`
-- SPA 路由需要正确配置重定向规则
-- 🔒 用户认证和权限管理
-- 🎨 支持浅色/深色模式
+项目还支持使用Docker进行部署：
 
-## 部署指南
+```bash
+# 构建Docker镜像
+docker-compose build
 
-### Cloudflare Pages 部署
+# 启动容器
+docker-compose up -d
+```
 
-1. 确保您的项目已经准备好并推送到 GitHub 仓库
-2. 登录到 Cloudflare Dashboard
-3. 导航到 Pages 部分并连接您的 GitHub 仓库
-4. 配置构建设置：
-   - 构建命令: `pnpm install --no-frozen-lockfile && pnpm build`
-   - 构建输出目录: `dist/static`
-5. 点击"部署网站"按钮开始部署过程
-
-### 本地开发
-
-1. 克隆仓库
-2. 安装依赖: `pnpm install`
-3. 启动开发服务器: `pnpm dev`
-4. 打开浏览器访问: `http://localhost:3000`
-
-## 技术栈
-
-- React 18+
-- TypeScript
-- Tailwind CSS
-- React Router
-- Recharts (数据可视化)
-- Sonner (通知组件)
-- Vite (构建工具)
-
-## 默认登录凭据
-
-- 用户名: `admin`
-- 密码: `admin123`
+应用将在 http://localhost:3000 访问。

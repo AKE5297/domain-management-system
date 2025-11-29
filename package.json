@@ -1,7 +1,7 @@
 {
   "name": "domain-management-system",
   "private": true,
-  "version": "1.0.17",
+  "version": "1.0.18",
   "type": "module",
   "engines": {
     "node": ">=16.0.0"
@@ -13,7 +13,7 @@
     "build": "rm -rf dist && pnpm build:client",
     "preinstall": "npx only-allow pnpm || echo 'Skipping only-allow in CI environment'",
     "deploy": "pnpm install --no-frozen-lockfile && pnpm build",
-    "cf-build": "npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm build"
+    "cf-build": "pnpm install --no-frozen-lockfile && pnpm build"
   },
   "dependencies": {
     "clsx": "^2.1.1",
