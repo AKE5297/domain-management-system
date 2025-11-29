@@ -4,15 +4,15 @@ workers_dev = true
 compatibility_date = "2024-07-01"
 
 [build]
-command = "pnpm install --no-frozen-lockfile && pnpm run build"
+command = "npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm run build"
 publish = "dist/static"
-# Cloudflare Pages 必需的属性
 pages_build_output_dir = "dist/static"
 
 [env.production]
-# 此处无需设置routes，Cloudflare Pages会自动处理路由
-# 在实际部署时，您需要在Cloudflare控制台设置自定义域名
-
-# 配置环境变量
-[env.production.vars]
 NODE_ENV = "production"
+
+# 路由配置 - 确保SPA应用正常工作
+[[routes]]
+pattern = "/*"
+status = 200
+dest = "/index.html"

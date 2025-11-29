@@ -109,7 +109,7 @@ export default function Home() {
     .slice(0, 3);
 
   return (
-     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
       {/* 侧边栏 */}
       {sidebarOpen && (
         <Sidebar onLogout={logout} currentPage="/" />
@@ -169,13 +169,13 @@ export default function Home() {
                 添加域名
               </Link>
               
-               <Link 
-                 to="/features"
-                 className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition duration-200 hover:bg-gray-50 dark:hover:bg-gray-700"
-               >
-                 <Plus className="h-4 w-4 mr-2" />
-                 功能列表
-               </Link>
+              <Link 
+                to="/features"
+                className="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg transition duration-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                功能列表
+              </Link>
             </div>
           </div>
           
@@ -334,7 +334,7 @@ export default function Home() {
         </main>
         
         {/* 页脚 */}
-         <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
+        <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <div className="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
