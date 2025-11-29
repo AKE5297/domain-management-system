@@ -8,6 +8,35 @@
 - 📊 数据统计和可视化分析
 - 📅 域名到期日历视图
 - ⚙️ 系统设置和通知管理
+
+## 部署指南
+
+### Cloudflare Pages 部署
+
+1. 确保项目包含有效的 `wrangler.toml` 文件
+2. 将代码推送到 GitHub 仓库
+3. 在 Cloudflare Pages 中连接您的 GitHub 仓库
+4. 确保构建配置中使用正确的构建命令
+5. 部署应该会自动开始
+
+### 本地开发
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+
+# 构建项目
+pnpm build
+```
+
+## 部署注意事项
+
+- 确保 .npmrc 文件中包含 `frozen-lockfile=false` 配置
+- 构建输出目录为 `dist/static`
+- SPA 路由需要正确配置重定向规则
 - 🔒 用户认证和权限管理
 - 🎨 支持浅色/深色模式
 
