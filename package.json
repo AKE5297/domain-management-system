@@ -11,7 +11,8 @@
     "dev": "pnpm dev:client",
     "build:client": "vite build --outDir dist/static",
     "build": "rm -rf dist && pnpm build:client",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "cf-build": "pnpm install --no-frozen-lockfile && pnpm build"
   },
   "dependencies": {
     "clsx": "^2.1.1",
