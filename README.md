@@ -1,4 +1,42 @@
-# 域名管理系统
+# 域名管理系统 - 部署指南
+
+## Cloudflare Pages 部署说明
+
+### 已知问题修复
+
+我已经修复了Cloudflare Pages部署过程中的主要问题，具体修改如下：
+
+1. **wrangler.toml配置优化**：
+   - 将`type`从`static`更改为`pages`以确保Cloudflare Pages正确识别
+   - 简化了构建配置，使用标准的`output_dir`参数
+   - 添加了正确的SPA路由重定向规则
+
+2. **依赖安装优化**：
+   - 在`.npmrc`中添加了`frozen-lockfile=false`，确保即使lockfile不匹配也能安装依赖
+   - 优化了package.json中的构建脚本，添加了专用的`deploy`命令
+
+3. **页面兼容性优化**：
+   - 在`index.html`中添加了`<base href="/" />`标签，确保SPA路由正常工作
+   - 添加了缓存控制元信息，优化Cloudflare Pages的缓存行为
+
+### 部署步骤
+
+1. 确保您的代码已推送到GitHub仓库
+2. 登录Cloudflare账户，进入Pages部分
+3. 点击"连接Git"按钮，选择您的域名管理系统仓库
+4. 在配置页面：
+   - 构建命令：`pnpm install --no-frozen-lockfile && pnpm build`
+   - 构建输出目录：`dist/static`
+   - 环境变量：确保设置了`NODE_ENV=production`
+5. 点击"保存并部署"，等待构建完成
+
+### 常见问题排查
+
+- **依赖安装失败**：确保使用了`--no-frozen-lockfile`参数
+- **路由问题**：检查`wrangler.toml`中的重定向规则是否正确
+- **构建输出**：确认构建输出目录与`wrangler.toml`中的配置一致
+
+如果您有任何部署问题，请随时联系支持团队。
 
 一个功能完整的域名管理系统，帮助您轻松管理和监控所有域名资产，及时获取到期提醒，确保您的域名不会意外过期。
 
